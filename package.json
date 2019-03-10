@@ -1,0 +1,20 @@
+{
+  "name": "dance-figures",
+  "version": "1.0.0",
+  "description": "Shows information about dance figures",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/foxable/dance-figures.git"
+  },
+  "author": "Sebastian Fuchs",
+  "dependencies": {
+    "@directus/sdk-js": "^5.2.1",
+    "react": "^16.8.4",
+    "react-dom": "^16.8.4",
+    "typescript": "^3.3.3333"
+  },
+  "devDependencies": {
+    "@types/react": "^16.8.7",
+    "@types/react-dom": "^16.8.2"
+  }
+}
