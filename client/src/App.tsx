@@ -1,24 +1,15 @@
 import * as React from "react";
 
+import { ApiService, Dance } from "./ApiService";
+
 interface AppProps
 {
-    client: DirectusSDK;
+    api: ApiService;
 }
 
 interface AppState
 {
     dances: Dance[];
-}
-
-interface Dance
-{
-    name: string;
-    figures: Figure[];
-}
-
-interface Figure
-{
-    name: string;
 }
 
 export default class App extends React.Component<AppProps, AppState>
@@ -33,7 +24,7 @@ export default class App extends React.Component<AppProps, AppState>
 
     public componentDidMount(): void
     {
-        this.props.client.getItems("dances")
+        this.props.api.fetchDances()
             .then(dances => this.setState({ ...this.state, dances }));
     }
 }

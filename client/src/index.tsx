@@ -1,14 +1,14 @@
 import * as ReactDOM from "react-dom";
 import * as React from "react";
-import DirectusSDK from "@directus/sdk-js";
 
+import { ApiService } from "./ApiService";
 import * as config from "../api.config.json";
 
 import App from "./App";
 
-const client = new DirectusSDK(config);
+const api = new ApiService(config);
 
 ReactDOM.render(
-    <App client={client}/>,
+    <App api={api}/>,
     document.getElementById("app")
 );
