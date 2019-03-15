@@ -14,3 +14,11 @@
 $router->get('/', function () use ($router) {
     return $router->app->version();
 });
+
+$router->get('dances', [
+    'uses' => 'DanceController@index'
+]);
+
+$router->get('dances/{dance}/figures', [
+    'uses' => 'DanceController@figures'
+]);
