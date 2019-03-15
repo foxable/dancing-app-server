@@ -12,15 +12,18 @@ class DanceController extends Controller
 
     public function index()
     {
-        return DB::table('dances')->get();
+        return DB::table('dances')
+            ->orderBy('sort', 'asc')
+            ->get();
     }
 
     public function figures($dance)
     {
         return DB::table('figures')
-            ->join('dances', 'figures.dance', '=', 'dances.id')
-            ->where('dances.abbr', $dance)
             ->select('figures.*')
+            ->join('dances', 'figures.dance_id', '=', 'dances.id')
+            ->where('dances.abbr', $dance)
+            ->orderBy('level', 'asc')
             ->get();
     }
 }
