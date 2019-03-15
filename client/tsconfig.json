@@ -1,8 +1,17 @@
 {
     "compilerOptions": {
         "target": "es6",
+        "module": "es6",
         "strict": true,
+        "moduleResolution": "node",
         "jsx": "react",
-        "resolveJsonModule": true
-    }
+        "jsxFactory": "React.createElement",
+        "rootDir": "src",
+        "outDir": "dist"
+    },
+    "include": [
+        "src/**/*.ts",
+        "src/**/*.tsx",
+        "src/**/*.d.ts",
+    ]
 }

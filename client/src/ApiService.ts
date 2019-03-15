@@ -1,6 +1,6 @@
 export interface ApiOptions
 {
-    url: string;
+    path: string;
 }
 
 export interface Dance
@@ -20,19 +20,19 @@ export interface Figure
 
 export class ApiService
 {
-    public constructor(private readonly options: ApiOptions)
-    {        
+    public constructor(private readonly path: string)
+    {
     }
 
     public async fetchDances(): Promise<Dance[]>
     {
-        const response = await fetch(`${this.options.url}/dances`);
+        const response = await fetch(`${this.path}/dances`);
         return await response.json();
     }
 
     public async fetchFigures(dance: string): Promise<Figure[]>
     {
-        const response = await fetch(`${this.options.url}/dances/${dance}/figures`);
+        const response = await fetch(`${this.path}/dances/${dance}/figures`);
         return await response.json();
     }
 }

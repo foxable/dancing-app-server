@@ -2,11 +2,10 @@ import * as ReactDOM from "react-dom";
 import * as React from "react";
 
 import { ApiService } from "./ApiService";
-import * as config from "../api.config.json";
 
 import App from "./App";
 
-const api = new ApiService(config);
+const api = new ApiService("./api");
 
 ReactDOM.render(
     <App api={api}/>,

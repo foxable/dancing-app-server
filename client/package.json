@@ -7,6 +7,11 @@
     "url": "git+https://github.com/foxable/dance-figures.git"
   },
   "author": "Sebastian Fuchs",
+  "scripts": {
+    "tsc": "node_modules/.bin/tsc",
+    "webpack": "node_modules/.bin/webpack",
+    "build": "npm run tsc && npm run webpack"
+  },
   "dependencies": {
     "react": "^16.8.4",
     "react-dom": "^16.8.4",
@@ -14,6 +19,8 @@
   },
   "devDependencies": {
     "@types/react": "^16.8.7",
-    "@types/react-dom": "^16.8.2"
+    "@types/react-dom": "^16.8.2",
+    "webpack": "^4.29.6",
+    "webpack-cli": "^3.3.0"
   }
 }
