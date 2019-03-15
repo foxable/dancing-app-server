@@ -12,13 +12,15 @@
 */
 
 $router->get('/', function () use ($router) {
-    return $router->app->version();
+    return view('dances');
 });
 
-$router->get('dances', [
-    'uses' => 'DanceController@index'
-]);
+$router->group([ 'prefix' => 'api'], function () use ($router) {
+    $router->get('dances', [
+        'uses' => 'DanceController@index'
+    ]);
 
-$router->get('dances/{dance}/figures', [
-    'uses' => 'DanceController@figures'
-]);
+    $router->get('dances/{dance}/figures', [
+        'uses' => 'DanceController@figures'
+    ]);
+});
