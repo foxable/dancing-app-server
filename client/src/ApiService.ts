@@ -20,8 +20,11 @@ export interface Figure
 
 export class ApiService
 {
-    public constructor(private readonly path: string)
+    private readonly path: string;
+
+    public constructor(path: string)
     {
+        this.path = path;
     }
 
     public async fetchDances(): Promise<Dance[]>

@@ -1,16 +1,17 @@
 {
-  "name": "dance-figures",
+  "name": "dancing-app",
   "version": "1.0.0",
   "description": "Shows information about dance figures",
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/foxable/dance-figures.git"
+    "url": "git+https://github.com/foxable/dancing-app.git"
   },
   "author": "Sebastian Fuchs",
   "scripts": {
-    "tsc": "node_modules/.bin/tsc",
-    "webpack": "node_modules/.bin/webpack",
-    "build": "npm run tsc && npm run webpack"
+    "tsc": "./node_modules/.bin/tsc",
+    "webpack": "./node_modules/.bin/webpack",
+    "eslint": "./node_modules/.bin/eslint src/**",
+    "build": "npm run eslint && npm run tsc && npm run webpack"
   },
   "dependencies": {
     "react": "^16.8.4",
@@ -20,6 +21,10 @@
   "devDependencies": {
     "@types/react": "^16.8.7",
     "@types/react-dom": "^16.8.2",
+    "@typescript-eslint/eslint-plugin": "^1.4.2",
+    "@typescript-eslint/parser": "^1.4.2",
+    "eslint": "^5.15.2",
+    "eslint-plugin-react": "^7.12.4",
     "webpack": "^4.29.6",
     "webpack-cli": "^3.3.0"
   }
