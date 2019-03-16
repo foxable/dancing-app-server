@@ -1,20 +1,20 @@
 import * as React from "react";
 
-import { ApiService, Dance } from "./ApiService";
+import { ApiService, IDance } from "./ApiService";
 
-interface AppProps
+interface IAppProps
 {
     api: ApiService;
 }
 
-interface AppState
+interface IAppState
 {
-    dances: Dance[];
+    dances: IDance[];
 }
 
-export default class App extends React.Component<AppProps, AppState>
+export default class App extends React.Component<IAppProps, IAppState>
 {
-    public constructor(props: AppProps)
+    public constructor(props: IAppProps)
     {
         super(props);
         this.state = {
@@ -32,7 +32,7 @@ export default class App extends React.Component<AppProps, AppState>
     {
         return (
             <ul>
-                {this.state.dances.map(_ => <li>{_.name}</li>)}
+                {this.state.dances.map(_ => <li key={_.abbr}>{_.name}</li>)}
             </ul>
         );
     }

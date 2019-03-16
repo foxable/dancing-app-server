@@ -3,7 +3,11 @@
         "browser": true,
         "es6": true
     },
-    "extends": ["plugin:@typescript-eslint/recommended"],
+    "extends": [
+        "eslint:recommended",
+        "plugin:@typescript-eslint/recommended",
+        "plugin:react/recommended"
+    ],
     "globals": {
         "Atomics": "readonly",
         "SharedArrayBuffer": "readonly"
@@ -21,8 +25,14 @@
         "@typescript-eslint",
         "react"
     ],
+    "settings": {
+        "react": {
+            "version": "detect"
+        }
+    },
     "rules": {
-        "no-console": "warn",
-        "no-debugger": "warn"
+        "no-console": "error",
+        "no-debugger": "error",
+        "@typescript-eslint/interface-name-prefix": ["error", "always"]
     }
 }

@@ -1,15 +1,16 @@
-export interface ApiOptions
+export interface IOptions
 {
     path: string;
 }
 
-export interface Dance
+export interface IDance
 {
     id: number;
     name: string;
+    abbr: string;
 }
 
-export interface Figure
+export interface IFigure
 {
     id: number;
     name: string;
@@ -27,13 +28,13 @@ export class ApiService
         this.path = path;
     }
 
-    public async fetchDances(): Promise<Dance[]>
+    public async fetchDances(): Promise<IDance[]>
     {
         const response = await fetch(`${this.path}/dances`);
         return await response.json();
     }
 
-    public async fetchFigures(dance: string): Promise<Figure[]>
+    public async fetchFigures(dance: string): Promise<IFigure[]>
     {
         const response = await fetch(`${this.path}/dances/${dance}/figures`);
         return await response.json();
