@@ -1,15 +1,23 @@
-const path = require("path");
+const path = require('path');
 
 module.exports = {
-    mode: 'development',
+    mode: "production",
     context: path.resolve(__dirname),
-    entry: './dist/index.js',
+    entry: {
+        "app": "./out/index.js"
+    },
     module: {
         rules: []
     },
     output: {
-        path: path.resolve(__dirname, 'dist'),
-        filename: 'app.bundle.js',
-        publicPath: '.'
+        path: path.resolve(__dirname, "dist"),
+        filename: "[name].bundle.js",
+        chunkFilename: "[name].bundle.js"
+    },
+    optimization: {
+        splitChunks: {
+            chunks: "all",
+            name: "vendors"
+        }
     }
 };

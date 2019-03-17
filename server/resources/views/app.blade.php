@@ -2,7 +2,8 @@
 <html lang="de">
     <head>
         <meta charset="utf-8">
-        <title>Tanzfiguren</title>        
+        <title>Tanzfiguren</title>
+        <script type="text/javascript" src="js/vendors.bundle.js"></script>
     </head>
     <body>
         <div id="app"></div>

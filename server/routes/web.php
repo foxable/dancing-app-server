@@ -12,7 +12,7 @@
 */
 
 $router->get('/', function () use ($router) {
-    return view('dances');
+    return view('app');
 });
 
 $router->group([ 'prefix' => 'api'], function () use ($router) {
