@@ -5,7 +5,6 @@
         "strict": true,
         "moduleResolution": "node",
         "jsx": "react",
-        "jsxFactory": "React.createElement",
         "rootDir": "src",
         "outDir": "dist"
     },

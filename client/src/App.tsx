@@ -1,6 +1,7 @@
 import * as React from "react";
 
 import { ApiService, IDance } from "./ApiService";
+import Dance from "./Dance";
 
 interface IAppProps
 {
@@ -32,7 +33,7 @@ export default class App extends React.Component<IAppProps, IAppState>
     {
         return (
             <ul>
-                {this.state.dances.map(_ => <li key={_.abbr}>{_.name}</li>)}
+                {this.state.dances.map(_ => <li key={_.abbr}><Dance data={_} api={this.props.api}/></li>)}
             </ul>
         );
     }

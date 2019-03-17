@@ -16,7 +16,7 @@ export interface IFigure
     name: string;
     description: string;
     level: number;
-    video: string;
+    video_url: string;
 }
 
 export class ApiService
