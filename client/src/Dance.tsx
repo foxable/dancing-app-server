@@ -1,4 +1,5 @@
 import * as React from "react";
+import { Table } from "bloomer";
 
 import { ApiService, IDance, IFigure } from "./ApiService";
 import Figure from "./Figure";
@@ -33,9 +34,11 @@ export default class Dance extends React.Component<IDanceProps, IDanceState>
             <>
                 <span onClick={this.toggleShowFigures}>{this.props.data.name}</span>
                 {this.state.showFigures ?
-                    <ul>                
-                        {this.state.figures.map(_ => <Figure data={_} key={_.id}/>)}
-                    </ul> : ""}
+                    <Table isBordered isStriped isNarrow>
+                        <tbody>
+                            {this.state.figures.map(_ => <Figure data={_} key={_.id}/>)}
+                        </tbody>                        
+                    </Table> : ""}
             </>
         );
     }

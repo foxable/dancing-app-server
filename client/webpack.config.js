@@ -7,10 +7,17 @@ module.exports = {
         "app": "./out/index.js"
     },
     module: {
-        rules: []
+        rules: [{
+            test: /\.scss$/,
+            use: [
+                "style-loader",
+                "css-loader",
+                "sass-loader"
+            ]
+        }]
     },
     output: {
-        path: path.resolve(__dirname, "dist"),
+        path: path.resolve(__dirname, "public", "js"),
         filename: "[name].bundle.js",
         chunkFilename: "[name].bundle.js"
     },

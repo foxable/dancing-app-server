@@ -1,4 +1,5 @@
 import * as React from "react";
+import { Section, Container, Hero, HeroBody, Title } from "bloomer";
 
 import { ApiService, IDance } from "./ApiService";
 import Dance from "./Dance";
@@ -32,9 +33,22 @@ export default class App extends React.Component<IAppProps, IAppState>
     public render(): JSX.Element
     {
         return (
-            <ul>
-                {this.state.dances.map(_ => <li key={_.abbr}><Dance data={_} api={this.props.api}/></li>)}
-            </ul>
+            <>
+                <Hero isColor="info" isSize="small">
+                    <HeroBody>
+                        <Container>
+                            <Title>Tanzfiguren</Title>
+                        </Container>
+                    </HeroBody>
+                </Hero>
+                <Section>
+                    <Container>
+                        <ul>
+                            {this.state.dances.map(_ => <li key={_.abbr}><Dance data={_} api={this.props.api}/></li>)}
+                        </ul>
+                    </Container>                    
+                </Section>                
+            </>            
         );
     }
 }
