@@ -3,6 +3,7 @@
     <head>
         <meta charset="utf-8">
         <title>Tanzfiguren</title>
+        <link rel="stylesheet" href="css/app.bundle.css"/>
         <script type="text/javascript" src="js/vendors.bundle.js"></script>
     </head>
     <body>

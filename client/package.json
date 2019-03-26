@@ -7,6 +7,7 @@
     "url": "git+https://github.com/foxable/dancing-app.git"
   },
   "author": "Sebastian Fuchs",
+  "license": "MIT",
   "scripts": {
     "tsc": "./node_modules/.bin/tsc",
     "webpack": "./node_modules/.bin/webpack",
@@ -26,11 +27,13 @@
     "@typescript-eslint/parser": "^1.4.2",
     "bloomer": "^0.6.5",
     "css-loader": "^2.1.1",
+    "cssnano": "^4.1.10",
     "eslint": "^5.15.2",
     "eslint-plugin-react": "^7.12.4",
+    "mini-css-extract-plugin": "^0.5.0",
     "node-sass": "^4.11.0",
+    "optimize-css-assets-webpack-plugin": "^5.0.1",
     "sass-loader": "^7.1.0",
-    "style-loader": "^0.23.1",
     "webpack": "^4.29.6",
     "webpack-cli": "^3.3.0"
   }
