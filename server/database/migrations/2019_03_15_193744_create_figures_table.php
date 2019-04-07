@@ -20,7 +20,6 @@ class CreateFiguresTable extends Migration
             $table->text('description');
             $table->integer('level')->unsigned();
             $table->string('video_url', 150);
-            $table->timestamps();
 
             $table->foreign('dance_id')->references('id')->on('dances');
 
