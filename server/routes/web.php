@@ -16,11 +16,15 @@ $router->get('/', function () use ($router) {
 });
 
 $router->group([ 'prefix' => 'api'], function () use ($router) {
-    $router->get('dances', [
-        'uses' => 'DanceController@index'
+    $router->get('dance-types', [
+        'uses' => 'DanceController@danceTypes'
     ]);
 
-    $router->get('dances/{dance}/figures', [
+    $router->get('dance-types/{typeId}/dances', [
+        'uses' => 'DanceController@dances'
+    ]);
+
+    $router->get('dances/{danceId}/figures', [
         'uses' => 'DanceController@figures'
     ]);
 });

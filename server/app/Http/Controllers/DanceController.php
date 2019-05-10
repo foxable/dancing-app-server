@@ -10,19 +10,26 @@ class DanceController extends Controller
     {
     }
 
-    public function index()
+    public function danceTypes()
+    {
+        return DB::table('dance_types')
+            ->orderBy('id', 'asc')
+            ->get();
+    }
+
+    public function dances($typeId)
     {
         return DB::table('dances')
+            ->where('type_id', $typeId)
             ->orderBy('sort', 'asc')
             ->get();
     }
 
-    public function figures($dance)
+    public function figures($danceId)
     {
         return DB::table('figures')
-            ->select('figures.*')
-            ->join('dances', 'figures.dance_id', '=', 'dances.id')
-            ->where('dances.abbr', $dance)
+            ->select('id', 'name', 'description', 'level', 'video_url')
+            ->where('dance_id', $danceId)
             ->orderBy('level', 'asc')
             ->get();
     }

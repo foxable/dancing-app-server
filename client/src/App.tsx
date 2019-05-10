@@ -1,8 +1,8 @@
 import * as React from "react";
-import { Section, Container, Hero, HeroBody, Title } from "bloomer";
+import { Section, Container, Hero, HeroBody, Field, Control, Select, Title, Table } from "bloomer";
 
-import { ApiService, IDance } from "./ApiService";
-import Dance from "./Dance";
+import { ApiService, IDanceType, IDance, IFigure } from "./ApiService";
+import Figure from "./Figure";
 
 interface IAppProps
 {
@@ -11,7 +11,12 @@ interface IAppProps
 
 interface IAppState
 {
+    currentDanceType?: string;
+    currentDance?: string;
+
+    danceTypes: IDanceType[];
     dances: IDance[];
+    figures: IFigure[];
 }
 
 export default class App extends React.Component<IAppProps, IAppState>
@@ -20,14 +25,64 @@ export default class App extends React.Component<IAppProps, IAppState>
     {
         super(props);
         this.state = {
-            dances: []
+            danceTypes: [],
+            dances: [],
+            figures: []
         };
+
+        this.handleDanceTypeChange = this.handleDanceTypeChange.bind(this);
+        this.handleDanceChange = this.handleDanceChange.bind(this);
     }
 
     public componentDidMount(): void
     {
-        this.props.api.fetchDances()
-            .then(dances => this.setState({ ...this.state, dances }));
+        this.fetchDanceTypes();
+    }
+
+    private async fetchDanceTypes(): Promise<void>
+    {
+        const danceTypes = await this.props.api.fetchDanceTypes();
+        
+        if (danceTypes.length === 0)
+            return;
+
+        const currentDanceType = danceTypes[0].id;
+        this.setState({ ...this.state, currentDanceType, danceTypes });
+        this.fetchDances(currentDanceType);  
+    }
+
+    private async fetchDances(danceTypeId: string): Promise<void>
+    {
+        const dances = await this.props.api.fetchDances(danceTypeId);
+
+        if (dances.length === 0)
+            return;
+
+        const currentDance = dances[0].id;
+        this.setState({ ...this.state, currentDance, dances });
+        this.fetchFigures(currentDance);
+    }
+
+    private async fetchFigures(danceId: string): Promise<void>
+    {
+        const figures = await this.props.api.fetchFigures(danceId);
+
+        this.setState({ ...this.state, figures });
+    }
+
+
+    private handleDanceTypeChange(event: React.ChangeEvent<HTMLSelectElement>): void
+    {
+        const currentDanceType = event.target.value;
+        this.setState({ ...this.state, currentDanceType });
+        this.fetchDances(currentDanceType);
+    }
+
+    private handleDanceChange(event: React.ChangeEvent<HTMLSelectElement>): void
+    {
+        const currentDance = event.target.value;
+        this.setState({ ...this.state, currentDance });
+        this.fetchFigures(currentDance);
     }
 
     public render(): JSX.Element
@@ -38,14 +93,28 @@ export default class App extends React.Component<IAppProps, IAppState>
                     <HeroBody>
                         <Container>
                             <Title>Tanzfiguren</Title>
+                            <Field isGrouped>
+                                <Control>
+                                    <Select value={this.state.currentDanceType} onChange={this.handleDanceTypeChange}>
+                                        {this.state.danceTypes.map(_ => <option key={_.id} value={_.id}>{_.name}</option>)}
+                                    </Select>
+                                </Control>
+                                <Control>
+                                    <Select value={this.state.currentDance} onChange={this.handleDanceChange}>
+                                        {this.state.dances.map(_ => <option key={_.id} value={_.id}>{_.name}</option>)}
+                                    </Select>
+                                </Control>
+                            </Field>
                         </Container>
                     </HeroBody>
-                </Hero>
+                </Hero>  
                 <Section>
                     <Container>
-                        <ul>
-                            {this.state.dances.map(_ => <li key={_.abbr}><Dance data={_} api={this.props.api}/></li>)}
-                        </ul>
+                        <Table isBordered isStriped isNarrow>
+                            <tbody>
+                                {this.state.figures.map(_ => <Figure data={_} key={_.id}/>)}
+                            </tbody>                        
+                        </Table>
                     </Container>                    
                 </Section>                
             </>            

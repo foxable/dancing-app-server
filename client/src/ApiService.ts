@@ -3,16 +3,21 @@ export interface IOptions
     path: string;
 }
 
+export interface IDanceType
+{
+    id: string;
+    name: string;
+}
+
 export interface IDance
 {
-    id: number;
+    id: string;
     name: string;
-    abbr: string;
 }
 
 export interface IFigure
 {
-    id: number;
+    id: string;
     name: string;
     description: string;
     level: number;
@@ -28,15 +33,21 @@ export class ApiService
         this.path = path;
     }
 
-    public async fetchDances(): Promise<IDance[]>
+    public async fetchDanceTypes(): Promise<IDanceType[]>
     {
-        const response = await fetch(`${this.path}/dances`);
+        const response = await fetch(`${this.path}/dance-types`);
         return await response.json();
     }
 
-    public async fetchFigures(dance: string): Promise<IFigure[]>
+    public async fetchDances(danceTypeId: string): Promise<IDance[]>
     {
-        const response = await fetch(`${this.path}/dances/${dance}/figures`);
+        const response = await fetch(`${this.path}/dance-types/${danceTypeId}/dances`);
+        return await response.json();
+    }
+
+    public async fetchFigures(danceId: string): Promise<IFigure[]>
+    {
+        const response = await fetch(`${this.path}/dances/${danceId}/figures`);
         return await response.json();
     }
 }
