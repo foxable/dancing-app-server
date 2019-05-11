@@ -16,11 +16,13 @@
   },
   "dependencies": {
     "bulma": "^0.7.4",
+    "marked": "^0.6.2",
     "react": "^16.8.4",
     "react-dom": "^16.8.4",
     "typescript": "^3.3.3333"
   },
   "devDependencies": {
+    "@types/marked": "^0.6.5",
     "@types/react": "^16.8.7",
     "@types/react-dom": "^16.8.2",
     "@typescript-eslint/eslint-plugin": "^1.4.2",

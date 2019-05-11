@@ -1,7 +1,8 @@
 import * as React from "react";
-import { Card, CardHeader, CardHeaderTitle, CardContent, Tag, Content } from "bloomer";
+import { Card, CardHeader, CardHeaderTitle, CardContent, Tag } from "bloomer";
 
 import { IFigure } from "./ApiService";
+import MarkdownContent from "./MarkdownContent";
 
 interface IFigureProps
 {
@@ -35,8 +36,8 @@ export default class App extends React.Component<IFigureProps, IFigureState>
                 </CardHeader>
                 {this.state.showDetails ?
                     <CardContent>
-                        <Content style={{ whiteSpace: "pre" }}>{this.props.data.description}</Content>
-                    </CardContent> : "" }                        
+                        <MarkdownContent text={this.props.data.description}/>
+                    </CardContent> : "" }
             </Card>
         );
     }
