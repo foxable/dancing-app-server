@@ -1,5 +1,5 @@
 import * as React from "react";
-import { Section, Container, Hero, HeroBody, Field, Control, Select, Title, Table } from "bloomer";
+import { Section, Container, Hero, HeroBody, Field, Control, Select, Title } from "bloomer";
 
 import { ApiService, IDanceType, IDance, IFigure } from "./ApiService";
 import Figure from "./Figure";
@@ -89,34 +89,38 @@ export default class App extends React.Component<IAppProps, IAppState>
     {
         return (
             <>
-                <Hero isColor="info" isSize="small">
+                <Hero isColor="dark" isSize="small">
                     <HeroBody>
                         <Container>
-                            <Title>Tanzfiguren</Title>
-                            <Field isGrouped>
-                                <Control>
-                                    <Select value={this.state.currentDanceType} onChange={this.handleDanceTypeChange}>
-                                        {this.state.danceTypes.map(_ => <option key={_.id} value={_.id}>{_.name}</option>)}
-                                    </Select>
-                                </Control>
-                                <Control>
-                                    <Select value={this.state.currentDance} onChange={this.handleDanceChange}>
-                                        {this.state.dances.map(_ => <option key={_.id} value={_.id}>{_.name}</option>)}
-                                    </Select>
-                                </Control>
-                            </Field>
+                            <Title>Tanzfiguren</Title>                            
                         </Container>
                     </HeroBody>
-                </Hero>  
+                </Hero>
                 <Section>
                     <Container>
-                        <Table isBordered isStriped isNarrow>
-                            <tbody>
-                                {this.state.figures.map(_ => <Figure data={_} key={_.id}/>)}
-                            </tbody>                        
-                        </Table>
-                    </Container>                    
-                </Section>                
+                        <Field>
+                            <Control isExpanded>
+                                <Select
+                                    value={this.state.currentDanceType}
+                                    onChange={this.handleDanceTypeChange}
+                                    isFullWidth>
+                                    {this.state.danceTypes.map(_ => <option key={_.id} value={_.id}>{_.name}</option>)}
+                                </Select>
+                            </Control>
+                        </Field>
+                        <Field>
+                            <Control isExpanded>
+                                <Select
+                                    value={this.state.currentDance}
+                                    onChange={this.handleDanceChange}
+                                    isFullWidth>
+                                    {this.state.dances.map(_ => <option key={_.id} value={_.id}>{_.name}</option>)}
+                                </Select>
+                            </Control>
+                        </Field>
+                        {this.state.figures.map(_ => <Figure data={_} key={_.id}/>)}
+                    </Container>
+                </Section>          
             </>            
         );
     }
