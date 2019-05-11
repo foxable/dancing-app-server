@@ -30,7 +30,7 @@ class DanceController extends Controller
         return DB::table('figures')
             ->select('id', 'name', 'description', 'level', 'video_url')
             ->where('dance_id', $danceId)
-            ->orderBy('level', 'asc')
+            ->orderBy('id', 'asc')
             ->get();
     }
 }
