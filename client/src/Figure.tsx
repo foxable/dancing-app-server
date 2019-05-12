@@ -1,8 +1,9 @@
 import * as React from "react";
-import { Card, CardHeader, CardHeaderTitle, CardContent, Tag } from "bloomer";
+import { Card, CardHeader, CardHeaderTitle, CardContent, Tag, CardFooter } from "bloomer";
 
 import { IFigure } from "./ApiService";
 import MarkdownContent from "./MarkdownContent";
+import { CardFooterItem } from "bloomer/lib/components/Card/Footer/CardFooterItem";
 
 interface IFigureProps
 {
@@ -26,18 +27,22 @@ export default class App extends React.Component<IFigureProps, IFigureState>
 
     public render(): JSX.Element
     {
+        const tagStyle = { marginLeft: "1rem" };
         return (
             <Card isFullWidth onClick={this.handleClick}>
                 <CardHeader>
                     <CardHeaderTitle>
-                        {this.props.data.video_url ? <a href={this.props.data.video_url}>{this.props.data.name}</a> : this.props.data.name }
-                        {this.props.data.level > 0 ? <Tag style={{ marginLeft: "1rem"}}>{this.props.data.level}</Tag> : "" }
+                        {this.props.data.name}
+                        {this.props.data.level === 0
+                            ? <Tag style={tagStyle} isColor="info">W</Tag>
+                            : <Tag style={tagStyle} isColor="light">{this.props.data.level}</Tag> }
                     </CardHeaderTitle>
                 </CardHeader>
                 {this.state.showDetails ?
-                    <CardContent>
-                        <MarkdownContent text={this.props.data.description}/>
-                    </CardContent> : "" }
+                    <>
+                        { this.props.data.description && <CardContent><MarkdownContent text={this.props.data.description}/></CardContent> }
+                        { this.props.data.video_url && <CardFooter><CardFooterItem href={this.props.data.video_url}>Video</CardFooterItem></CardFooter> }
+                    </> : "" }
             </Card>
         );
     }

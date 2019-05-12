@@ -1,5 +1,5 @@
 import * as React from "react";
-import { Section, Container, Hero, HeroBody, Field, Control, Select, Title } from "bloomer";
+import { Section, Container, Hero, Field, Control, Select, HeroFooter, Tabs, TabList, Tab, TabLink } from "bloomer";
 
 import { ApiService, IDanceType, IDance, IFigure } from "./ApiService";
 import Figure from "./Figure";
@@ -90,11 +90,15 @@ export default class App extends React.Component<IAppProps, IAppState>
         return (
             <>
                 <Hero isColor="dark" isSize="small">
-                    <HeroBody>
-                        <Container>
-                            <Title>Tanzfiguren</Title>                            
-                        </Container>
-                    </HeroBody>
+                    <HeroFooter style={{ marginTop: "1rem" }}>
+                        <Tabs isBoxed>
+                            <Container>
+                                <TabList>
+                                    <Tab isActive><TabLink>Tanzfiguren</TabLink></Tab>
+                                </TabList>
+                            </Container>
+                        </Tabs>
+                    </HeroFooter>
                 </Hero>
                 <Section>
                     <Container>
