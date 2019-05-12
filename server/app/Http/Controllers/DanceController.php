@@ -21,7 +21,7 @@ class DanceController extends Controller
     {
         return DB::table('dances')
             ->where('type_id', $typeId)
-            ->orderBy('sort', 'asc')
+            ->orderBy('name', 'asc')
             ->get();
     }
 
