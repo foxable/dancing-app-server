@@ -24,7 +24,7 @@ export interface IFigure
     video_url: string;
 }
 
-export class ApiService
+export class DataService
 {
     private readonly path: string;
 

@@ -1,12 +1,15 @@
 import * as React from "react";
-import { Section, Container, Hero, Field, Control, Select, HeroFooter, Tabs, TabList, Tab, TabLink } from "bloomer";
+import { Hero, HeroFooter, Section, Container } from "bloomer";
 
-import { ApiService, IDanceType, IDance, IFigure } from "./ApiService";
+import { DataService, IDanceType, IDance, IFigure } from "../DataService";
+
+import HeaderNav from "./HeaderNav";
+import Select from "./Select";
 import Figure from "./Figure";
 
 interface IAppProps
 {
-    api: ApiService;
+    service: DataService;
 }
 
 interface IAppState
@@ -41,7 +44,7 @@ export default class App extends React.Component<IAppProps, IAppState>
 
     private async fetchDanceTypes(): Promise<void>
     {
-        const danceTypes = await this.props.api.fetchDanceTypes();
+        const danceTypes = await this.props.service.fetchDanceTypes();
         
         if (danceTypes.length === 0)
             return;
@@ -53,7 +56,7 @@ export default class App extends React.Component<IAppProps, IAppState>
 
     private async fetchDances(danceTypeId: string): Promise<void>
     {
-        const dances = await this.props.api.fetchDances(danceTypeId);
+        const dances = await this.props.service.fetchDances(danceTypeId);
 
         if (dances.length === 0)
             return;
@@ -65,7 +68,7 @@ export default class App extends React.Component<IAppProps, IAppState>
 
     private async fetchFigures(danceId: string): Promise<void>
     {
-        const figures = await this.props.api.fetchFigures(danceId);
+        const figures = await this.props.service.fetchFigures(danceId);
 
         this.setState({ ...this.state, figures });
     }
@@ -91,38 +94,20 @@ export default class App extends React.Component<IAppProps, IAppState>
             <>
                 <Hero isColor="dark" isSize="small">
                     <HeroFooter style={{ marginTop: "1rem" }}>
-                        <Tabs isBoxed>
-                            <Container>
-                                <TabList>
-                                    <Tab isActive><TabLink>Tanzfiguren</TabLink></Tab>
-                                </TabList>
-                            </Container>
-                        </Tabs>
+                        <HeaderNav/>
                     </HeroFooter>
                 </Hero>
                 <Section>
                     <Container>
-                        <Field>
-                            <Control isExpanded>
-                                <Select
-                                    value={this.state.currentDanceType}
-                                    onChange={this.handleDanceTypeChange}
-                                    isFullWidth>
-                                    {this.state.danceTypes.map(_ => <option key={_.id} value={_.id}>{_.name}</option>)}
-                                </Select>
-                            </Control>
-                        </Field>
-                        <Field>
-                            <Control isExpanded>
-                                <Select
-                                    value={this.state.currentDance}
-                                    onChange={this.handleDanceChange}
-                                    isFullWidth>
-                                    {this.state.dances.map(_ => <option key={_.id} value={_.id}>{_.name}</option>)}
-                                </Select>
-                            </Control>
-                        </Field>
-                        {this.state.figures.map(_ => <Figure data={_} key={_.id}/>)}
+                        <Select
+                            value={this.state.currentDanceType}
+                            onChange={this.handleDanceTypeChange}
+                            options={this.state.danceTypes}/>
+                        <Select
+                            value={this.state.currentDance}
+                            onChange={this.handleDanceChange}
+                            options={this.state.dances}/>
+                        {this.state.figures.map(_ => <Figure key={_.id} data={_}/>)}
                     </Container>
                 </Section>          
             </>            

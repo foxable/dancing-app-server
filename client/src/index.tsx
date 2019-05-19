@@ -1,15 +1,15 @@
 import * as ReactDOM from "react-dom";
 import * as React from "react";
 
-import { ApiService } from "./ApiService";
+import { DataService } from "./DataService";
 
-import App from "./App";
+import App from "./components/App";
 
 import "../styles/app.scss";
 
-const api = new ApiService("./api");
+const service = new DataService("./api");
 
 ReactDOM.render(
-    <App api={api}/>,
+    <App service={service}/>,
     document.getElementById("app")
 );

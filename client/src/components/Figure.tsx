@@ -1,9 +1,8 @@
 import * as React from "react";
-import { Card, CardHeader, CardHeaderTitle, CardContent, Tag, CardFooter } from "bloomer";
+import { Card, CardHeader, CardHeaderTitle, CardContent, Tag, CardFooter, CardFooterItem } from "bloomer";
 
-import { IFigure } from "./ApiService";
+import { IFigure } from "../DataService";
 import MarkdownContent from "./MarkdownContent";
-import { CardFooterItem } from "bloomer/lib/components/Card/Footer/CardFooterItem";
 
 interface IFigureProps
 {
@@ -15,7 +14,7 @@ interface IFigureState
     showDetails: boolean;
 }
 
-export default class App extends React.Component<IFigureProps, IFigureState>
+export default class Figure extends React.Component<IFigureProps, IFigureState>
 {
     public constructor(props: IFigureProps)
     {
