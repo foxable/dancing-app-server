@@ -1,7 +1,7 @@
 import * as React from "react";
-import { Card, CardHeader, CardHeaderTitle, CardContent, Tag, CardFooter, CardFooterItem } from "bloomer";
 
 import { IFigure } from "../DataService";
+import { Card, CardHeader, CardHeaderTitle, CardContent, CardFooter, CardFooterItem, Tag } from "./bulma";
 import MarkdownContent from "./MarkdownContent";
 
 interface IFigureProps

@@ -1,22 +1,26 @@
 import * as React from "react";
 import * as classNames from "classnames";
 
+import { is } from "../helpers";
+
 export interface IContainerProps
 {
-    fluid?: boolean;
-    widescreen?: boolean;
-    fullhd?: boolean;
+    isFluid?: boolean;
+    isWidescreen?: boolean;
+    isFullHd?: boolean;
 }
 
-export const Container: React.FunctionComponent<IContainerProps & React.HTMLProps<HTMLDivElement>> = (props): JSX.Element => {
-    const containerClass = classNames("container", props.className, {
-        "is-fluid": props.fluid,
-        "is-widescreen": props.widescreen,
-        "is-fullhd": props.fullhd
-    });
+export const Container: React.FunctionComponent<IContainerProps & React.HTMLProps<HTMLDivElement>> = ({ isFluid, isWidescreen, isFullHd, className, children, ...props }): JSX.Element => {
+    className = classNames(
+        "container",        
+        is("fluid", isFluid),
+        is("widescreen", isWidescreen),
+        is("fullhd", isFullHd),
+        className,
+    );
     return (
-        <div className={containerClass} {...props}>
-            {props.children}
+        <div className={className} {...props}>
+            {children}
         </div>
     );
 };
