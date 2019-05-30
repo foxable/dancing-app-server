@@ -1,5 +1,7 @@
 import * as React from "react";
-import { Container, Tabs, TabList, Tab, TabLink } from "bloomer";
+import { Tabs, TabList, Tab, TabLink } from "bloomer";
+
+import { Container } from "./bulma";
 
 const HeaderNav = () => (
     <Tabs isBoxed>

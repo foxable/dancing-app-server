@@ -1,7 +1,7 @@
 import * as React from "react";
-import { Hero, HeroFooter, Section, Container } from "bloomer";
 
 import { DataService, IDanceType, IDance, IFigure } from "../DataService";
+import { Hero, HeroFooter, Section, Container } from "./bulma";
 
 import HeaderNav from "./HeaderNav";
 import Select from "./Select";
@@ -92,8 +92,8 @@ export default class App extends React.Component<IAppProps, IAppState>
     {
         return (
             <>
-                <Hero isColor="dark" isSize="small">
-                    <HeroFooter style={{ marginTop: "1rem" }}>
+                <Hero color="dark">
+                    <HeroFooter className="header-footer">
                         <HeaderNav/>
                     </HeroFooter>
                 </Hero>
