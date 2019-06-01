@@ -1,5 +1,5 @@
 import * as React from "react";
 
-export const TabLink: React.FunctionComponent<React.HTMLProps<HTMLAnchorElement>> = ({ children, ...props }): JSX.Element => {
-    return <a {...props}>{children}</a>;
-};
+export const TabLink: React.FunctionComponent<React.HTMLProps<HTMLAnchorElement>> = (props: React.HTMLProps<HTMLAnchorElement>) => (
+    <a {...props}></a>
+);

@@ -1,6 +1,6 @@
 import * as React from "react";
 
-import { Field, Control, Select as BloomerSelect } from "./bulma";
+import { Field, Control, Select as FormSelect } from "./bulma";
 
 export interface ISelectProps
 {
@@ -15,17 +15,15 @@ export interface ISelectOption
     name: string;
 }
 
-const Select = (props: ISelectProps) => (
+export const Select: React.FunctionComponent<ISelectProps> = ({ value, options, onChange }: ISelectProps) => (
     <Field>
         <Control isExpanded>
-            <BloomerSelect
-                value={props.value}
-                onChange={props.onChange}
+            <FormSelect
+                value={value}
+                onChange={onChange}
                 isFullWidth>
-                {props.options.map(_ => <option key={_.id} value={_.id}>{_.name}</option>)}
-            </BloomerSelect>
+                {options.map(_ => <option key={_.id} value={_.id}>{_.name}</option>)}
+            </FormSelect>
         </Control>
     </Field>
 );
-
-export default Select;

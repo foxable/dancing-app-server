@@ -1,14 +1,11 @@
 import * as React from "react";
 import * as classNames from "classnames";
 
-export const Section: React.FunctionComponent<React.HTMLProps<HTMLElement>> = ({ className, children, ...props }): JSX.Element => {
-    className = classNames(
+export const Section: React.FunctionComponent<React.HTMLProps<HTMLElement>> = ({ className, ...props }: React.HTMLProps<HTMLElement>) => {
+    const sectionClass = classNames(
         "section",
         className
     );
-    return (
-        <section className={className} {...props}>
-            {children}
-        </section>
-    );
+
+    return <section className={sectionClass} {...props}></section>;
 };

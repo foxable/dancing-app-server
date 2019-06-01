@@ -2,7 +2,7 @@ import * as React from "react";
 
 import { IFigure } from "../DataService";
 import { Card, CardHeader, CardHeaderTitle, CardContent, CardFooter, CardFooterItem, Tag } from "./bulma";
-import MarkdownContent from "./MarkdownContent";
+import { MarkdownContent } from "./MarkdownContent";
 
 interface IFigureProps
 {
@@ -14,7 +14,7 @@ interface IFigureState
     showDetails: boolean;
 }
 
-export default class Figure extends React.Component<IFigureProps, IFigureState>
+export class Figure extends React.Component<IFigureProps, IFigureState>
 {
     public constructor(props: IFigureProps)
     {
@@ -32,8 +32,8 @@ export default class Figure extends React.Component<IFigureProps, IFigureState>
                     <CardHeaderTitle>
                         {this.props.data.name}
                         {this.props.data.level === 0
-                            ? <Tag className="figure-tag" isColor="info">W</Tag>
-                            : <Tag className="figure-tag" isColor="light">{this.props.data.level}</Tag> }
+                            ? <Tag className="figure-tag" isInfo>W</Tag>
+                            : <Tag className="figure-tag" isLight>{this.props.data.level}</Tag> }
                     </CardHeaderTitle>
                 </CardHeader>
                 {this.state.showDetails ?

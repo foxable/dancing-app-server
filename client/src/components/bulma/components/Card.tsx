@@ -1,22 +1,19 @@
 import * as React from "react";
 import * as classNames from "classnames";
 
-import { is } from "../helpers";
-
-export interface ICardProps
+export interface ICardProps extends React.HTMLProps<HTMLDivElement>
 {
     isFullWidth?: boolean;
 }
 
-export const Card: React.FunctionComponent<ICardProps & React.HTMLProps<HTMLDivElement>> = ({ isFullWidth, className, children, ...props }): JSX.Element => {
-    className = classNames(
+export const Card: React.FunctionComponent<ICardProps> = ({ isFullWidth, ...props }: ICardProps) => {
+    const cardClass = classNames(
         "card",
-        is("fullwidth", isFullWidth),
-        className
+        {
+            "is-fullwidth": isFullWidth
+        },
+        props
     );
-    return (
-        <div className={className} {...props}>
-            {children}
-        </div>
-    );
+
+    return <div className={cardClass} {...props}></div>;
 };

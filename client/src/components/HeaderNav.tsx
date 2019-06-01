@@ -2,7 +2,7 @@ import * as React from "react";
 
 import { Container, Tabs, TabList, Tab, TabLink } from "./bulma";
 
-const HeaderNav = () => (
+export const HeaderNav: React.FunctionComponent = () => (
     <Tabs isBoxed>
         <Container>
             <TabList>
@@ -11,5 +11,3 @@ const HeaderNav = () => (
         </Container>
     </Tabs>
 );
-
-export default HeaderNav;

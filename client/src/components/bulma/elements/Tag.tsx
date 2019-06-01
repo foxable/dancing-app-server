@@ -1,31 +1,49 @@
 import * as React from "react";
 import * as classNames from "classnames";
 
-import { is, isClass } from "../helpers";
-
-export interface ITagProps
+export interface ITagProps extends React.HTMLProps<HTMLDivElement>
 {
-    isColor?: TagColor;
-    isSize?: TagSize;
+    isBlack?: boolean;
+    isDark?: boolean;
+    isLight?: boolean;
+    isWhite?: boolean;
+    isPrimary?: boolean;
+    isLink?: boolean;
+    isInfo?: boolean;
+    isSuccess?: boolean;
+    isWarning?: boolean;
+    isDanger?: boolean;
+
+    isNormal?: boolean;
+    isMedium?: boolean;
+    isLarge?: boolean;
+
     isRounded?: boolean;
     isDelete?: boolean;
 }
 
-export type TagColor = "black" | "dark" | "light" | "white" | "primary" | "link" | "info" | "success" | "warning" | "danger";
-export type TagSize = "normal" | "medium" | "large";
-
-export const Tag: React.FunctionComponent<ITagProps & React.HTMLProps<HTMLDivElement>> = ({ isColor, isSize, isRounded, isDelete, className, children, ...props }): JSX.Element => {
-    className = classNames(
+export const Tag: React.FunctionComponent<ITagProps> = ({ isBlack, isDark, isLight, isWhite, isPrimary, isLink, isInfo, isSuccess, isWarning, isDanger, isNormal, isMedium, isLarge, isRounded, isDelete, className, ...props }: ITagProps) => {
+    const tagClass = classNames(
         "tag",
-        isClass(isColor),
-        isClass(isSize),
-        is("rounded", isRounded),
-        is("delete", isDelete),
+        {
+            "is-black": isBlack,
+            "is-dark": isDark,
+            "is-light": isLight,
+            "is-white": isWhite,
+            "is-primary": isPrimary,
+            "is-link": isLink,
+            "is-info": isInfo,
+            "is-success": isSuccess,
+            "is-warning": isWarning,
+            "is-danger": isDanger,
+            "is-normal": isNormal,
+            "isMedium": isMedium,
+            "is-large": isLarge,
+            "is-rounded": isRounded,
+            "is-delete": isDelete
+        },
         className
     );
-    return (
-        <div className={className} {...props}>
-            {children}
-        </div>
-    );
+
+    return <div className={tagClass} {...props}></div>;
 };

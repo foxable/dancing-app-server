@@ -1,5 +1,5 @@
 import * as React from "react";
 
-export const TabList: React.FunctionComponent<React.HTMLProps<HTMLUListElement>> = ({ children, ...props }): JSX.Element => {
-    return <ul {...props}>{children}</ul>;
-};
+export const TabList: React.FunctionComponent<React.HTMLProps<HTMLUListElement>> = (props: React.HTMLProps<HTMLUListElement>) => (
+    <ul {...props}></ul>
+);

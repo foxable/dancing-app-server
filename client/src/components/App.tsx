@@ -3,9 +3,9 @@ import * as React from "react";
 import { DataService, IDanceType, IDance, IFigure } from "../DataService";
 import { Hero, HeroFooter, Section, Container } from "./bulma";
 
-import HeaderNav from "./HeaderNav";
-import Select from "./Select";
-import Figure from "./Figure";
+import { HeaderNav } from "./HeaderNav";
+import { Select } from "./Select";
+import { Figure } from "./Figure";
 
 interface IAppProps
 {
@@ -77,7 +77,7 @@ export default class App extends React.Component<IAppProps, IAppState>
     private async fetchFigures(danceId: string): Promise<void>
     {
         const figures = await (this._cache.figures.get(danceId) || this.props.service.fetchFigures(danceId));
-        console.log(danceId, figures, this._cache.figures.get(danceId));
+
         this._cache.figures.set(danceId, figures);        
         this.setState({ ...this.state, figures });
     }
@@ -100,7 +100,7 @@ export default class App extends React.Component<IAppProps, IAppState>
     {
         return (
             <>
-                <Hero isColor="dark">
+                <Hero isDark>
                     <HeroFooter className="header-footer">
                         <HeaderNav/>
                     </HeroFooter>
