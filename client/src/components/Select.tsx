@@ -1,5 +1,6 @@
 import * as React from "react";
-import { Field, Control, Select as BloomerSelect } from "bloomer";
+
+import { Field, Control, Select as BloomerSelect } from "./bulma";
 
 export interface ISelectProps
 {

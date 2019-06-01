@@ -26,15 +26,14 @@ export default class Figure extends React.Component<IFigureProps, IFigureState>
 
     public render(): JSX.Element
     {
-        const tagStyle = { marginLeft: "1rem" };
         return (
             <Card isFullWidth onClick={this.handleClick}>
                 <CardHeader>
                     <CardHeaderTitle>
                         {this.props.data.name}
                         {this.props.data.level === 0
-                            ? <Tag style={tagStyle} isColor="info">W</Tag>
-                            : <Tag style={tagStyle} isColor="light">{this.props.data.level}</Tag> }
+                            ? <Tag className="figure-tag" isColor="info">W</Tag>
+                            : <Tag className="figure-tag" isColor="light">{this.props.data.level}</Tag> }
                     </CardHeaderTitle>
                 </CardHeader>
                 {this.state.showDetails ?

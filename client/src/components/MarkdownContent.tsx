@@ -1,6 +1,7 @@
 import * as React from "react";
 import * as marked from "marked";
-import { Content } from "bloomer";
+
+import { Content } from "./bulma";
 
 interface IMarkdownContentProps
 {
