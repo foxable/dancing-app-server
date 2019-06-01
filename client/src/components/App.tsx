@@ -14,23 +14,33 @@ interface IAppProps
 
 interface IAppState
 {
-    currentDanceType?: string;
-    currentDance?: string;
-
+    selectedDanceType?: string;
+    selectedDance?: string;    
     danceTypes: IDanceType[];
     dances: IDance[];
-    figures: IFigure[];
+    figures: IFigure[];    
+}
+
+interface IAppCache
+{
+    readonly dances: Map<string, IDance[]>;
+    readonly figures: Map<string, IFigure[]>;
 }
 
 export default class App extends React.Component<IAppProps, IAppState>
 {
+    private readonly _cache: IAppCache = {
+        dances: new Map(),
+        figures: new Map()
+    };
+
     public constructor(props: IAppProps)
     {
         super(props);
-        this.state = {
-            danceTypes: [],
+        this.state = {            
             dances: [],
-            figures: []
+            figures: [],
+            danceTypes: []
         };
 
         this.handleDanceTypeChange = this.handleDanceTypeChange.bind(this);
@@ -45,47 +55,45 @@ export default class App extends React.Component<IAppProps, IAppState>
     private async fetchDanceTypes(): Promise<void>
     {
         const danceTypes = await this.props.service.fetchDanceTypes();
-        
-        if (danceTypes.length === 0)
-            return;
+        const selectedDanceType = danceTypes.length > 0 ? danceTypes[0].id : undefined;
+        this.setState({ ...this.state, selectedDanceType, danceTypes });
 
-        const currentDanceType = danceTypes[0].id;
-        this.setState({ ...this.state, currentDanceType, danceTypes });
-        this.fetchDances(currentDanceType);  
+        if (typeof selectedDanceType !== "undefined")
+            this.fetchDances(selectedDanceType);  
     }
 
     private async fetchDances(danceTypeId: string): Promise<void>
     {
-        const dances = await this.props.service.fetchDances(danceTypeId);
+        const dances = await (this._cache.dances.get(danceTypeId) || this.props.service.fetchDances(danceTypeId));
+        const selectedDance = dances.length > 0 ? dances[0].id : undefined;
 
-        if (dances.length === 0)
-            return;
+        this._cache.dances.set(danceTypeId, dances);
+        this.setState({ ...this.state, selectedDance, dances });
 
-        const currentDance = dances[0].id;
-        this.setState({ ...this.state, currentDance, dances });
-        this.fetchFigures(currentDance);
+        if (typeof selectedDance !== "undefined")
+            this.fetchFigures(selectedDance);
     }
 
     private async fetchFigures(danceId: string): Promise<void>
     {
-        const figures = await this.props.service.fetchFigures(danceId);
-
+        const figures = await (this._cache.figures.get(danceId) || this.props.service.fetchFigures(danceId));
+        console.log(danceId, figures, this._cache.figures.get(danceId));
+        this._cache.figures.set(danceId, figures);        
         this.setState({ ...this.state, figures });
     }
 
-
     private handleDanceTypeChange(event: React.ChangeEvent<HTMLSelectElement>): void
     {
-        const currentDanceType = event.target.value;
-        this.setState({ ...this.state, currentDanceType });
-        this.fetchDances(currentDanceType);
+        const selectedDanceType = event.target.value;
+        this.setState({ ...this.state, selectedDanceType });
+        this.fetchDances(selectedDanceType);
     }
 
     private handleDanceChange(event: React.ChangeEvent<HTMLSelectElement>): void
     {
-        const currentDance = event.target.value;
-        this.setState({ ...this.state, currentDance });
-        this.fetchFigures(currentDance);
+        const selectedDance = event.target.value;
+        this.setState({ ...this.state, selectedDance });
+        this.fetchFigures(selectedDance);
     }
 
     public render(): JSX.Element
@@ -100,11 +108,11 @@ export default class App extends React.Component<IAppProps, IAppState>
                 <Section>
                     <Container>
                         <Select
-                            value={this.state.currentDanceType}
+                            value={this.state.selectedDanceType}
                             onChange={this.handleDanceTypeChange}
                             options={this.state.danceTypes}/>
                         <Select
-                            value={this.state.currentDance}
+                            value={this.state.selectedDance}
                             onChange={this.handleDanceChange}
                             options={this.state.dances}/>
                         {this.state.figures.map(_ => <Figure key={_.id} data={_}/>)}
