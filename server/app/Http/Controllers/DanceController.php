@@ -32,7 +32,8 @@ class DanceController extends Controller
         return DB::table('figures')
             ->selectRaw('CAST(id AS CHAR) AS id, name, description, level, video_url')
             ->where('dance_id', $danceId)
-            ->orderBy('id', 'asc')
+            ->orderBy('level', 'desc')
+            ->orderBy('id', 'desc')
             ->get();
     }
 }
