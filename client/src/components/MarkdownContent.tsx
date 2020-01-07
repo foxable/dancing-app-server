@@ -8,9 +8,11 @@ interface IMarkdownContentProps
     text: string;
 }
 
-export const MarkdownContent: React.FunctionComponent<IMarkdownContentProps> = ({ text }: IMarkdownContentProps) =>
+const MarkdownContent: React.FC<IMarkdownContentProps> = ({ text }) =>
 {
     const innerHtml = { __html: marked(text) };
         
     return <Content dangerouslySetInnerHTML={innerHtml}/>;
 };
+
+export default MarkdownContent;

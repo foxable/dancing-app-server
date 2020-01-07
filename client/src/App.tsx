@@ -4,8 +4,8 @@ import { DataService, IDanceType, IDance, IFigure } from "./DataService";
 import { Hero, HeroFooter, Section, Container } from "./components/bulma";
 
 import { HeaderNav } from "./components/HeaderNav";
-import { Select } from "./components/Select";
-import { Figure } from "./components/Figure";
+import Select from "./components/Select";
+import Figure from "./components/Figure";
 
 interface IAppProps
 {

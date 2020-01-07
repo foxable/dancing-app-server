@@ -2,20 +2,20 @@ import React from "react";
 
 import { Field, Control, Select as FormSelect } from "./bulma";
 
-export interface ISelectProps
+interface ISelectProps
 {
     value: string | undefined;    
     options: ISelectOption[];
     onChange(event: React.ChangeEvent<HTMLSelectElement>): void;
 }
 
-export interface ISelectOption
+interface ISelectOption
 {
     id: string;
     name: string;
 }
 
-export const Select: React.FunctionComponent<ISelectProps> = ({ value, options, onChange }: ISelectProps) => (
+const Select: React.FC<ISelectProps> = ({ value, options, onChange }) => (
     <Field>
         <Control isExpanded>
             <FormSelect
@@ -27,3 +27,5 @@ export const Select: React.FunctionComponent<ISelectProps> = ({ value, options, 
         </Control>
     </Field>
 );
+
+export default Select;
