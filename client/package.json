@@ -1,44 +1,46 @@
 {
-  "name": "dancing-app",
-  "version": "1.0.0",
-  "description": "Shows information about dance figures",
-  "repository": {
-    "type": "git",
-    "url": "git+https://github.com/foxable/dancing-app.git"
-  },
+  "name": "dancing-app-client",
+  "version": "0.1.0",
   "author": "Sebastian Fuchs",
   "license": "MIT",
-  "scripts": {
-    "tsc": "./node_modules/.bin/tsc",
-    "webpack": "./node_modules/.bin/webpack",
-    "eslint": "./node_modules/.bin/eslint src/**",
-    "build": "npm run eslint && npm run tsc && npm run webpack"
-  },
   "dependencies": {
-    "bulma": "^0.7.4",
+    "@testing-library/jest-dom": "^4.2.4",
+    "@testing-library/react": "^9.3.2",
+    "@testing-library/user-event": "^7.1.2",
+    "@types/classnames": "^2.2.9",
+    "@types/jest": "^24.0.0",
+    "@types/marked": "^0.7.2",
+    "@types/node": "^12.0.0",
+    "@types/react": "^16.9.0",
+    "@types/react-dom": "^16.9.0",    
+    "bulma": "^0.8.0",
     "classnames": "^2.2.6",
-    "marked": "^0.6.2",
-    "react": "^16.8.4",
-    "react-dom": "^16.8.4",
-    "typescript": "^3.3.3333"
+    "marked": "^0.8.0",
+    "node-sass": "^4.13.0",
+    "react": "^16.12.0",
+    "react-dom": "^16.12.0",
+    "react-scripts": "3.3.0",
+    "typescript": "~3.7.2"
   },
-  "devDependencies": {
-    "@types/classnames": "^2.2.7",
-    "@types/marked": "^0.6.5",
-    "@types/react": "^16.8.7",
-    "@types/react-dom": "^16.8.2",
-    "@typescript-eslint/eslint-plugin": "^1.4.2",
-    "@typescript-eslint/parser": "^1.4.2",
-    "bloomer": "^0.6.5",
-    "css-loader": "^2.1.1",
-    "cssnano": "^4.1.10",
-    "eslint": "^5.15.2",
-    "eslint-plugin-react": "^7.12.4",
-    "mini-css-extract-plugin": "^0.6.0",
-    "node-sass": "^4.11.0",
-    "optimize-css-assets-webpack-plugin": "^5.0.1",
-    "sass-loader": "^7.1.0",
-    "webpack": "^4.29.6",
-    "webpack-cli": "^3.3.0"
+  "scripts": {
+    "start": "react-scripts start",
+    "build": "react-scripts build",
+    "test": "react-scripts test",
+    "eject": "react-scripts eject"
+  },
+  "eslintConfig": {
+    "extends": "react-app"
+  },
+  "browserslist": {
+    "production": [
+      ">0.2%",
+      "not dead",
+      "not op_mini all"
+    ],
+    "development": [
+      "last 1 chrome version",
+      "last 1 firefox version",
+      "last 1 safari version"
+    ]
   }
 }

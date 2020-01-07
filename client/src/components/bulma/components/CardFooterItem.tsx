@@ -1,5 +1,5 @@
 import * as React from "react";
-import * as classNames from "classnames";
+import classNames from "classnames";
 
 export type CardFooterItemProps = React.HTMLProps<HTMLDivElement & HTMLAnchorElement>;
 
@@ -11,6 +11,7 @@ export const CardFooterItem: React.FunctionComponent<CardFooterItemProps> = ({ c
 
     if (props.href)
     {
+        // eslint-disable-next-line
         return <a className={cardFooterItemClass} {...props}></a>;
     }
 

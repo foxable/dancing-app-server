@@ -1,5 +1,5 @@
-import * as React from "react";
-import * as marked from "marked";
+import React from "react";
+import marked from "marked";
 
 import { Content } from "./bulma";
 

@@ -1,11 +1,11 @@
-import * as React from "react";
+import React from "react";
 
-import { DataService, IDanceType, IDance, IFigure } from "../DataService";
-import { Hero, HeroFooter, Section, Container } from "./bulma";
+import { DataService, IDanceType, IDance, IFigure } from "./DataService";
+import { Hero, HeroFooter, Section, Container } from "./components/bulma";
 
-import { HeaderNav } from "./HeaderNav";
-import { Select } from "./Select";
-import { Figure } from "./Figure";
+import { HeaderNav } from "./components/HeaderNav";
+import { Select } from "./components/Select";
+import { Figure } from "./components/Figure";
 
 interface IAppProps
 {

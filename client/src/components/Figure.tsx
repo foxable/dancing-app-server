@@ -1,4 +1,4 @@
-import * as React from "react";
+import React from "react";
 
 import { IFigure } from "../DataService";
 import { Card, CardHeader, CardHeaderTitle, CardContent, CardFooter, CardFooterItem, Tag } from "./bulma";
