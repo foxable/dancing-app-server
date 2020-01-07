@@ -1,4 +1,4 @@
-import * as React from "react";
+import React from "react";
 
 import { Container, Tabs, TabList, Tab, TabLink } from "./bulma";
 
