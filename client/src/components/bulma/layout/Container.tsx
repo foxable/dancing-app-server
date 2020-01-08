@@ -1,14 +1,14 @@
 import React from "react";
 import classNames from "classnames";
 
-export interface IContainerProps extends React.HTMLProps<HTMLDivElement>
+interface IContainerProps extends React.HTMLProps<HTMLDivElement>
 {
     isFluid?: boolean;
     isWidescreen?: boolean;
     isFullHd?: boolean;
 }
 
-export const Container: React.FunctionComponent<IContainerProps> = ({ isFluid, isWidescreen, isFullHd, className, ...props }: IContainerProps) => {
+export const Container: React.FC<IContainerProps> = ({ isFluid, isWidescreen, isFullHd, className, ...props }) => {
     const containerClass = classNames(
         "container",        
         {

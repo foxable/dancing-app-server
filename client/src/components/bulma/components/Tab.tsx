@@ -1,12 +1,12 @@
 import React from "react";
 import classNames from "classnames";
 
-export interface ITabProps extends React.HTMLProps<HTMLLIElement>
+interface ITabProps extends React.HTMLProps<HTMLLIElement>
 {
     isActive?: boolean;
 }
 
-export const Tab: React.FunctionComponent<ITabProps> = ({ isActive, className, ...props }: ITabProps) => {
+export const Tab: React.FC<ITabProps> = ({ isActive, className, ...props }) => {
     const tabClass = classNames(
         {
             "is-active": isActive

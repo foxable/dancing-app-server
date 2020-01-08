@@ -1,10 +1,7 @@
 import React from "react";
 import classNames from "classnames";
 
-export type HeroColor = "primary" | "info" | "success" | "warning" | "danger" | "light" | "dark";
-export type HeroSize = "medium" | "large" | "fullheight";
-
-export interface IHeroProps extends React.HTMLProps<HTMLElement>
+interface IHeroProps extends React.HTMLProps<HTMLElement>
 {
     isPrimary?: boolean;
     isInfo?: boolean;
@@ -19,7 +16,7 @@ export interface IHeroProps extends React.HTMLProps<HTMLElement>
     isFullHeight?: boolean;
 }
 
-export const Hero: React.FunctionComponent<IHeroProps> = ({ isPrimary, isInfo, isSuccess, isWarning, isDanger, isLight, isDark, isMedium, isLarge, isFullHeight, className, ...props }: IHeroProps) => {
+export const Hero: React.FC<IHeroProps> = ({ isPrimary, isInfo, isSuccess, isWarning, isDanger, isLight, isDark, isMedium, isLarge, isFullHeight, className, ...props }) => {
     const heroClass = classNames(
         "hero",
         {

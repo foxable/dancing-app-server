@@ -1,7 +1,7 @@
 import React from "react";
 import classNames from "classnames";
 
-export const Section: React.FunctionComponent<React.HTMLProps<HTMLElement>> = ({ className, ...props }: React.HTMLProps<HTMLElement>) => {
+export const Section: React.FC<React.HTMLProps<HTMLElement>> = ({ className, ...props }) => {
     const sectionClass = classNames(
         "section",
         className

@@ -1,12 +1,12 @@
 import React from "react";
 import classNames from "classnames";
 
-export interface IControlProps extends React.HTMLProps<HTMLDivElement>
+interface IControlProps extends React.HTMLProps<HTMLDivElement>
 {
     isExpanded?: boolean;
 }
 
-export const Control: React.FunctionComponent<IControlProps> = ({ isExpanded, className, ...props }: IControlProps) => {
+export const Control: React.FC<IControlProps> = ({ isExpanded, className, ...props }) => {
     const controlClass = classNames(
         "control",
         {

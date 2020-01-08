@@ -1,9 +1,9 @@
-import * as React from "react";
+import React from "react";
 import classNames from "classnames";
 
-export type CardFooterItemProps = React.HTMLProps<HTMLDivElement & HTMLAnchorElement>;
+type CardFooterItemProps = React.HTMLProps<HTMLDivElement & HTMLAnchorElement>;
 
-export const CardFooterItem: React.FunctionComponent<CardFooterItemProps> = ({ className, ...props }: CardFooterItemProps) => {
+export const CardFooterItem: React.FunctionComponent<CardFooterItemProps> = ({ className, ...props }) => {
     const cardFooterItemClass = classNames(
         "card-footer-item",
         className

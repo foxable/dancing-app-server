@@ -1,12 +1,12 @@
 import React from "react";
 import classNames from "classnames";
 
-export interface ICardProps extends React.HTMLProps<HTMLDivElement>
+interface ICardProps extends React.HTMLProps<HTMLDivElement>
 {
     isFullWidth?: boolean;
 }
 
-export const Card: React.FunctionComponent<ICardProps> = ({ isFullWidth, ...props }: ICardProps) => {
+export const Card: React.FC<ICardProps> = ({ isFullWidth, ...props }) => {
     const cardClass = classNames(
         "card",
         {
