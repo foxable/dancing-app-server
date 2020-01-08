@@ -1,6 +1,6 @@
 import React from "react";
 
-import { Field, Control, Select as FormSelect } from "./bulma";
+import { Field, Control, Select as SelectInput } from "./bulma";
 
 interface ISelectProps
 {
@@ -18,12 +18,12 @@ interface ISelectOption
 const Select: React.FC<ISelectProps> = ({ value, options, onChange }) => (
     <Field>
         <Control isExpanded>
-            <FormSelect
+            <SelectInput
                 value={value}
                 onChange={onChange}
                 isFullWidth>
                 {options.map(_ => <option key={_.id} value={_.id}>{_.name}</option>)}
-            </FormSelect>
+            </SelectInput>
         </Control>
     </Field>
 );

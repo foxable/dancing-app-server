@@ -1,7 +1,7 @@
 import React from "react";
 import classNames from "classnames";
 
-export interface ITabsProps extends React.HTMLProps<HTMLDivElement>
+interface ITabsProps extends React.HTMLProps<HTMLDivElement>
 {
     isCentered?: boolean;
     isRight?: boolean;
@@ -14,7 +14,7 @@ export interface ITabsProps extends React.HTMLProps<HTMLDivElement>
     isFullWidth?: boolean;
 }
 
-export const Tabs: React.FunctionComponent<ITabsProps> = ({ isCentered, isRight, isSmall, isMedium, isLarge, isBoxed, isToggle, isToggleRounded, isFullWidth, className, ...props }: ITabsProps) => {
+export const Tabs: React.FC<ITabsProps> = ({ isCentered, isRight, isSmall, isMedium, isLarge, isBoxed, isToggle, isToggleRounded, isFullWidth, className, ...props }) => {
     const tabsClass = classNames(
         "tabs",
         {

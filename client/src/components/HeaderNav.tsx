@@ -2,7 +2,7 @@ import React from "react";
 
 import { Container, Tabs, TabList, Tab, TabLink } from "./bulma";
 
-export const HeaderNav: React.FC = () => (
+const HeaderNav: React.FC = () => (
     <Tabs isBoxed>
         <Container>
             <TabList>
@@ -11,3 +11,5 @@ export const HeaderNav: React.FC = () => (
         </Container>
     </Tabs>
 );
+
+export default HeaderNav;

@@ -1,7 +1,7 @@
 import React from "react";
 import classNames from "classnames";
 
-export interface ISelectProps extends React.HTMLProps<HTMLSelectElement>
+interface ISelectProps extends React.HTMLProps<HTMLSelectElement>
 {
     isMultiple?: boolean;
     isSmall?: boolean;
@@ -10,7 +10,7 @@ export interface ISelectProps extends React.HTMLProps<HTMLSelectElement>
     isFullWidth?: boolean;
 }
 
-export const Select: React.FunctionComponent<ISelectProps> = ({ isMultiple, isSmall, isMedium, isLarge, isFullWidth, className, ...props }: ISelectProps) => {
+export const Select: React.FC<ISelectProps> = ({ isMultiple, isSmall, isMedium, isLarge, isFullWidth, className, ...props }) => {
     const selectClass = classNames(
         "select",
         {
@@ -22,6 +22,7 @@ export const Select: React.FunctionComponent<ISelectProps> = ({ isMultiple, isSm
         },
         className,
     );
+
     return (
         <div className={selectClass}>
             <select {...props}></select>            

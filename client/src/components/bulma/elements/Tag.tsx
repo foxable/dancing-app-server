@@ -1,7 +1,7 @@
 import React from "react";
 import classNames from "classnames";
 
-export interface ITagProps extends React.HTMLProps<HTMLDivElement>
+interface ITagProps extends React.HTMLProps<HTMLDivElement>
 {
     isBlack?: boolean;
     isDark?: boolean;
@@ -22,7 +22,7 @@ export interface ITagProps extends React.HTMLProps<HTMLDivElement>
     isDelete?: boolean;
 }
 
-export const Tag: React.FunctionComponent<ITagProps> = ({ isBlack, isDark, isLight, isWhite, isPrimary, isLink, isInfo, isSuccess, isWarning, isDanger, isNormal, isMedium, isLarge, isRounded, isDelete, className, ...props }: ITagProps) => {
+export const Tag: React.FC<ITagProps> = ({ isBlack, isDark, isLight, isWhite, isPrimary, isLink, isInfo, isSuccess, isWarning, isDanger, isNormal, isMedium, isLarge, isRounded, isDelete, className, ...props }) => {
     const tagClass = classNames(
         "tag",
         {

@@ -1,7 +1,7 @@
 import React from "react";
 import classNames from "classnames";
 
-export const CardFooter: React.FunctionComponent<React.HTMLProps<HTMLDivElement>> = ({ className, ...props }: React.HTMLProps<HTMLDivElement>) => {
+export const CardFooter: React.FC<React.HTMLProps<HTMLDivElement>> = ({ className, ...props }) => {
     const cardFooterClass = classNames(
         "card-footer",
         className
