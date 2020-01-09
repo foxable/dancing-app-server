@@ -7,7 +7,7 @@ import * as serviceWorker from './serviceWorker';
 
 import './index.scss';
 
-const service = new DataService('./api');
+const service = new DataService('https://th-api.foxable.dev');
 
 ReactDOM.render(
     <App service={service}/>,
