@@ -11,20 +11,14 @@
 |
 */
 
-$router->get('/', function () use ($router) {
-    return view('app');
-});
+$router->get('dance-types', [
+    'uses' => 'DanceController@danceTypes'
+]);
 
-$router->group([ 'prefix' => 'api'], function () use ($router) {
-    $router->get('dance-types', [
-        'uses' => 'DanceController@danceTypes'
-    ]);
+$router->get('dance-types/{typeId}/dances', [
+    'uses' => 'DanceController@dances'
+]);
 
-    $router->get('dance-types/{typeId}/dances', [
-        'uses' => 'DanceController@dances'
-    ]);
-
-    $router->get('dances/{danceId}/figures', [
-        'uses' => 'DanceController@figures'
-    ]);
-});
+$router->get('dances/{danceId}/figures', [
+    'uses' => 'DanceController@figures'
+]);

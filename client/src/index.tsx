@@ -11,7 +11,7 @@ const service = new DataService('./api');
 
 ReactDOM.render(
     <App service={service}/>,
-    document.getElementById('app')
+    document.getElementById('root')
 );
 
 // If you want your app to work offline and load faster, you can change
