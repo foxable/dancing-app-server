@@ -7,7 +7,8 @@ import * as serviceWorker from './serviceWorker';
 
 import './index.scss';
 
-const service = new DataService('https://th-api.foxable.dev');
+const apiPath = process.env.REACT_APP_API_PATH ?? "/api";
+const service = new DataService(apiPath);
 
 ReactDOM.render(
     <App service={service}/>,
